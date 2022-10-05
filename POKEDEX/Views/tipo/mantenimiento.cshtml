@@ -1,0 +1,64 @@
+﻿@using Application.viewModels;
+@model List<TipoviewModel>
+
+@{
+ViewData["Title"] = "Mantemiento Tipos";
+}
+
+<br/>
+<br/>
+<br/>
+
+
+      
+    
+
+    <div class="container" align="center">
+
+<h2 class="mt-2 ml-5 d-inline-block align-bottom text-success" >Mantemiento de Tipos</h2>
+
+ </div>
+
+  <div class="container w-75">
+
+    <div class=" d-flex justify-content-center">
+        <button type="button" class="btn btn-primary btn-lg btn-block mt-2" onclick="location.href='@Url.Action("createTipo", "tipo")'">
+    <i class="fa-solid fa-plus"></i> Crear Tipo</button>
+    </div>
+@if (Model != null )
+        {
+ <table class="table table-success table-striped ">
+  <thead class="th">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+       @foreach(var item in Model)
+    {
+    <tr>
+      <th scope="row">@item.Id</th>
+      <td>@item.Name</td>
+      <td>
+     <a  class="w-100 btn btn-success" asp-area="" asp-controller="tipo" asp-action="Edit" asp-route-id="@item.Id"> 
+         <i class="fa-solid fa-edit"></i> Editar</a>
+      </td>
+      <td>
+           <a  class="w-100 btn btn-danger " asp-area="" asp-controller="tipo" asp-action="Delete" asp-route-id="@item.Id">
+               <i class="fa-solid fa-trash"></i> Eliminar</a>
+      </td>
+       
+    </tr>
+    
+    }
+
+  </tbody>
+</table>
+
+       }
+
+        </div>

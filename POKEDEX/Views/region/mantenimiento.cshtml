@@ -1,0 +1,58 @@
+﻿@using Application.viewModels;
+@model List<RegionviewModel>
+
+@{
+ViewData["Title"] = "Mantemiento Regiones";
+}
+
+<br/>
+<br/>
+<br/>
+
+        <div class="container" align="center">
+<h2 class="mt-2 ml-5 d-inline-block align-bottom text-success" >Mantemiento de Regiones</h2>
+ </div>
+
+ <div class=" d-flex justify-content-center">
+ <button type="button" class="btn btn-primary btn-lg btn-block mt-2" onclick="location.href='@Url.Action("createRegion", "region")'">
+    <i class="fa-solid fa-plus"></i> Crear Region</button>
+    </div>
+
+@if (Model != null )
+        {
+ <table class="table">
+  <thead class="th">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+       <th scope="col">Editar</th>
+       <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+       @foreach(var item in Model)
+    {
+    <tr>
+      <th scope="row">@item.Id</th>
+      <td>@item.Name</td>
+      <td>@item.Description</td>
+      <td colspan="2">
+      @*<a  class="btn btn-success " asp-area="" asp-controller="region" asp-action="Edit" asp-route-id="@item.Id"> Editar</a>*@
+      <div class="row row-cols-2 ">
+     <a  class="btn btn-success " asp-area="" asp-controller="region" asp-action="Edit" asp-route-id="@item.Id"> 
+         <i class="fa-solid fa-edit"></i></a>
+     <a  class="btn btn-danger " asp-area="" asp-controller="region" asp-action="Delete" asp-route-id="@item.Id">
+         <i class="fa-solid fa-trash"></i></a>
+      </div>
+      </td>
+       
+    </tr>
+    
+    }
+
+  </tbody>
+</table>
+
+       }

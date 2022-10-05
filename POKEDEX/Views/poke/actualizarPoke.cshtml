@@ -1,0 +1,89 @@
+﻿@model Application.viewModels.SavePokeViewModel;
+@{
+   bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Guardar producto";
+}
+
+<br/>
+<br/>
+
+ 
+<div class="container m-auto mt-5">
+    <h4>@(editMode ? "Creando un nuevo pokemon" : $"Editando el pokemon: {Model.Name}")</h4>
+     <div class="row row-cols-2">
+
+        <div class="card " style="width: 25rem;background-color: #C7DBD2">
+           
+     <img class="card-img-top " src=@Model.ImgUrl alt="Card image cap">
+     </div>
+     
+      <div class="card  bg-gradient" style="width: 40rem;background-color: #C7DBD2">
+
+      <form method="post" asp-controller="poke" asp-action="@(editMode ? "Create" : "Edit")" >
+    <label>Nombre</label>
+    <input type="text" class="form-control" asp-for="Name" placeholder="Introduzca nombre" required>
+   
+  <div class="form-group col-sm align-content-center">
+    <label>Foto</label>
+    <input type="text" class="form-control" asp-for="ImgUrl" placeholder="Introduzca url de imagen" required>
+  </div>
+  <div class="form-group col-sm align-content-center">
+    <label>Description</label>
+    <textarea class="form-control" asp-for="Description" placeholder="Inserter description" required>
+
+    </textarea>
+    @*<input type="text" class="form-control" asp-for="Description" placeholder="Inserter description" required>*@
+  </div>
+  
+   <div class="row mb-3">
+
+       <div class="form-group col-sm-4">
+       <label class="form-check-label" for="exampleCheck1">Region</label>
+    <select class="form-select" aria-label="Default select example" required asp-for="RegionId">
+        <option value="" selected disabled hidden>Seleccione region del pokemon</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  </select>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="form-check-label" for="exampleCheck1">Tipo Primario</label>
+    <select class="form-select" aria-label="Default select example" required asp-for="PrimaryType">
+         <option value="" selected disabled hidden>Seleccione tipo primario</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  </select>
+  </div>
+
+    <div class="form-group col-sm-4">
+    <label class="form-check-label" for="exampleCheck1">Tipo Secundario</label>
+    <select class="form-select" aria-label="Default select example" asp-for="SecondaryType">
+   <option value="" selected disabled hidden>Seleccione tipo secundario</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+   <option value="4">four</option>
+    <option value="5">five</option>
+     <option value="6">six</option>
+  </select>
+  </div>
+
+        </div>
+
+  <div class="row mb-3 w-50 m-auto">
+  <button type="submit" class="btn btn-success btn-lg col-sm m-2 ">
+       <i class="fa-solid fa-save"></i>Guardar</button>
+   <a  class="btn btn-secondary btn-lg col-sm m-2 " asp-area="" asp-controller="poke" asp-action="mantenimiento">
+      <i class="fa-solid fa-cancel"></i> Cancelar</a>
+  </div>
+  
+
+</form>
+     </div>
+
+    
+    </div>
+    </div>
+

@@ -1,0 +1,56 @@
+﻿@using Application.viewModels;
+@model List<PokeviewModel>
+
+@{
+ViewData["Title"] = "Mantenimiento Pokémones";
+}
+
+<br/>
+<br/>
+<br/>
+
+           <div class="container" align="center">
+ <h2 class="mt-2 ml-5 d-inline-block align-bottom text-success" >Mantenimiento de pokemons</h2>
+ </div>
+
+ <div class=" d-flex justify-content-center">
+  <button type="button" class="btn btn-primary btn-lg btn-block mt-2" onclick="location.href='@Url.Action("createPoke", "poke")'">
+    <i class="fa-solid fa-plus"></i> Crear Pokemon</button>
+    </div>
+
+     
+
+   
+@if (Model != null )
+        {
+<div class="cards-wrapper ">
+
+     <div class="row row-cols-4">
+        
+            @foreach(var item in Model)
+    {
+        <div class="card zoom" style="width: 18rem;background-color: #C7DBD2">  
+    <h4 class="card-title mt-2 " align="center"> <strong>@item.Id</strong>  @item.Name</h4>
+  <img class="card-img-top " src=@item.ImgUrl alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text" > 
+        <br/>
+    <strong>Tipos: </strong> @item.PrimaryType @item.SecondaryType
+     <br/>
+    <strong>Region: </strong>  @item.RegionId
+    <hr/>
+    <div class="row row-cols-2 ">
+     <a  class="btn btn-success " asp-area="" asp-controller="poke" asp-action="Edit" asp-route-id="@item.Id"> 
+          <i class="fa-solid fa-edit"></i> Editar
+     </a>
+     <a  class="btn btn-danger " asp-area="" asp-controller="poke" asp-action="Delete" asp-route-id="@item.Id"> 
+          <i class="fa-solid fa-trash"></i> Eliminar</a>
+      </div>
+  </div>
+</div>
+    }
+    </div>
+</div>
+ }
+
+

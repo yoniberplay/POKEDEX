@@ -1,0 +1,37 @@
+﻿@model Application.viewModels.saveTipoViewModel;
+@{
+   bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Guardar Tipo";
+}
+
+<br/>
+<br/>
+
+ 
+<div class="container m-auto mt-5 col-6" >
+    <h4>@(editMode ? "Creando nuevo Tipo" : $"Editando Tipo: {Model.Name}")</h4>
+     <div class="row row-cols-2">
+
+     
+      <div class="card  bg-gradient" style="width: 40rem;background-color: #D1E7DD ;" >
+
+      <form method="post" asp-controller="tipo" asp-action="@(editMode ? "Create" : "Edit")" >
+    <label >Nombre</label>
+    <input type="text" class="form-control" asp-for="Name" placeholder="Introduzca nombre" required>
+   
+
+  <div class="row mb-3 w-50 m-auto">
+  <button type="submit" class="btn btn-success btn-lg col-sm m-2 ">
+       <i class="fa-solid fa-save"></i> Guardar</button>
+   <a  class="btn btn-secondary btn-lg col-sm m-2 " asp-area="" asp-controller="tipo" asp-action="mantenimiento">
+        <i class="fa-solid fa-cancel"></i> Cancelar</a>
+  </div>
+  
+
+</form>
+     </div>
+
+    
+    </div>
+    </div>
+
