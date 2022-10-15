@@ -3,7 +3,7 @@
 ## Tools
 - C#
 - ASP.NET Core MVC
-- Blazor
+- Razor
 - Class Library
 - Entity Framework
 - SQL SERVER 2018
